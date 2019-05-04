@@ -7,8 +7,12 @@
         <b-col cols="3">
           <Menu></Menu>
         </b-col>
-        <b-col cols="9">
-             <router-view></router-view>
+        <b-col cols="8">
+   
+        <b-card class="h-100">
+          <router-view></router-view>
+        </b-card>
+
         </b-col>
   </b-row>
 </div>

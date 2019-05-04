@@ -1,7 +1,7 @@
 <template>
     <div>
-      <b-col cols="7">
-        <b-form class="m-3"  @submit.prevent="postPromotions">
+      <b-col cols="12">
+        <b-form class="m-2"  @submit.prevent="postPromotions">
           <b-form-group label-cols="4" label-cols-lg="2" label="Nombre:">
             <b-form-input type="text" required
                           name="name"

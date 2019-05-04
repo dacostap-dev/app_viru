@@ -1,5 +1,6 @@
 <template>
     <div>
+      <b-container>
       <b-row>
         <b-button @click="showModal()" variant="outline-primary">Añadir nuevo modulo</b-button>
       </b-row>
@@ -10,17 +11,19 @@
           </b-card-group> 
       </b-row>
    
-    <b-modal 
-      @show="resetModal"
-      @hidden="resetModal"
-      @ok="handleOk"
-      ref="modul_register" centered title="Agregar Modulo">
-         <b-form class="m-3"  ref="form" @submit.stop.prevent="handleSubmit">
-          <b-form-group label-cols="4" label-cols-lg="2" label="Nombre:">
-           <b-form-select v-model="nombre" :state="nameState" :options="options"></b-form-select>
-          </b-form-group>
-        </b-form>
-      </b-modal>
+         <b-modal 
+          @show="resetModal"
+          @hidden="resetModal"
+          @ok="handleOk"
+          ref="modul_register" centered title="Agregar Modulo">
+            <b-form class="m-3"  ref="form" @submit.stop.prevent="handleSubmit">
+              <b-form-group label-cols="4" label-cols-lg="2" label="Nombre:">
+              <b-form-select v-model="nombre" :state="nameState" :options="options"></b-form-select>
+              </b-form-group>
+            </b-form>
+          </b-modal>
+          
+      </b-container>
       
     </div>
 </template>
