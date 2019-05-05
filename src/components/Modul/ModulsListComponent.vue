@@ -1,16 +1,16 @@
 <template>
     <div>
       <b-container>
-      <b-row>
-        <b-button @click="showModal()" variant="outline-primary">Añadir nuevo modulo</b-button>
-      </b-row>
+        <b-row>
+          <b-button @click="showModal()" variant="outline-primary">Añadir nuevo modulo</b-button>
+        </b-row>
 
-       <b-row>
-          <b-card-group class="mt-4" columns>
-            <Modul v-for="modul in moduls" :key="modul.id" :modul="modul" />
-          </b-card-group> 
-      </b-row>
-   
+        <b-row>
+            <b-card-group class="mt-4" columns>
+              <Modul v-for="modul in moduls" :key="modul.id" :modul="modul" />
+            </b-card-group> 
+        </b-row>
+    
          <b-modal 
           @show="resetModal"
           @hidden="resetModal"
@@ -72,8 +72,8 @@ export default {
         })
       },
       checkFormValidity() {
-        if(this.nombre == null){
-          return false
+        if(this.nombre==null){
+          this.nameState = false
         }else{
           return true
         }

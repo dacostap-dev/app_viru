@@ -2,12 +2,22 @@
     <div>
         <b-list-group-item @click="selectStudent()">
                 <b-row class="" align-h="center">
-                    <b-col cols="12" md="3" class="text-center">
+                    <b-col cols="3" md="3" class="text-center">
                         <b-img :src="stu.genero === 'female' ? female : male" rounded="circle" width="60" height="60" class="m-1" />
                     </b-col>
-                    <b-col cols="6" align-self="center" class="d-none d-md-block">
+                    <b-col cols="5" align-self="center" class="d-none d-md-block">
                         <p class="mb-1">
                         {{stu.name}}
+                        </p>
+                    </b-col>
+                    <b-col cols="2" align-self="center" class="d-none d-md-block">
+                        <p class="mb-1">
+                        <i class="fas fa-edit">Editar</i>
+                        </p>
+                    </b-col>
+                      <b-col cols="2" align-self="center" class="d-none d-md-block">
+                        <p class="mb-1">
+                        <i class="fas fa-trash-alt">Eliminar</i>
                         </p>
                     </b-col>
                     

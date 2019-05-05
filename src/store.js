@@ -90,6 +90,14 @@ export default new Vuex.Store({
           }
       })
     },
+    postStudent(context, params){
+      return axios.post('/student', params).then((response)=>{
+        if(response.data.success){
+          this.state.students.push(response.data.student)
+          console.log(response.data)
+        }
+      })
+    },
     postModul(context, params){
       return axios.post('/modul', params).then((response)=>{
         if(response.data.success){
