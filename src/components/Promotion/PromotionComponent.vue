@@ -57,7 +57,8 @@ export default {
       selectPromotion(){
       console.log(this.promo.id)
       this.$router.push('/promotions/'+ this.promo.id);
-      this.$store.dispatch('getStudents', this.promo)
+      this.$store.commit('PromotionSelected', this.promo);
+      this.$store.dispatch('getStudents', this.promo.id)
       },
       showModal() {
        this.$refs['modal_update'].show()

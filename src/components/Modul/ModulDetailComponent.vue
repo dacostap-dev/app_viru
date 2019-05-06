@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-col cols="8">
+        <b-col cols="11">
             <h1>Detalle del {{Modul.name}}</h1>
                 
             <b-form class="m-3"  @submit.prevent="updateModul()">
@@ -69,7 +69,7 @@ export default {
     },
     methods:{
         ClonarModulo(){
-            this.Modul = this.modulSelected;
+            this.Modul = Object.assign({}, this.modulSelected);
         },
         updateModul(){
             this.$store.dispatch('updateModul', this.Modul)

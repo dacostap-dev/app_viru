@@ -36,6 +36,12 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    eliminarStudent(context, params){
+      return axios.delete('/student/' +params.id).then((response)=>{
+        this.dispatch('getStudents', params.promotion_id)
+        console.log(response.data)
+      })
+    },
     updateModul(context, params){
       return axios.put('/modul/'+ params.id, params).then(() => {
         console.log('funcionó')
@@ -47,6 +53,12 @@ export default new Vuex.Store({
       console.log(response.data)
       })
     },
+    updateStudent(context, params){
+      return axios.put('/student/'+ params.id, params).then((response)=>{      
+       this.dispatch('getStudents', params.promotion_id);  
+      console.log(response.data)
+      })
+    },
     getModuls(context, stu){
       return axios.get('/modul/'+ stu.id).then((response)=>{
         context.commit('ModulsList', response.data)
@@ -54,11 +66,9 @@ export default new Vuex.Store({
         console.log(stu)
       })
     },
-    getStudents(context, promo){
-      return axios.get('/student/' +promo.id).then((response)=>{
-        context.commit('StudentsList', response.data)
-        context.commit('PromotionSelected', promo)
-        
+    getStudents(context, promo_id){
+      return axios.get('/student/' +promo_id).then((response)=>{
+        context.commit('StudentsList', response.data)  
         console.log(response.data)
       })
     },

@@ -19,7 +19,7 @@
 
       <b-row class="mt-2 justify-content-md-center">
 
-         <b-list-group style="width: 44rem;">
+         <b-list-group style="width: 40rem;">
 
              <Student v-for="stu in students" :key="stu.id" :stu="stu">
              </Student>   
