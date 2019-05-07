@@ -72,6 +72,12 @@ export default new Vuex.Store({
         console.log(response.data)
       })
     },
+    getAllStudents(context, buscador){
+      return axios.get('/student?name='+buscador).then((response)=>{
+        context.commit('StudentsList', response.data)  
+        console.log(response.data)
+      })
+    },
     getStudentsFiltered(context,params){
       return axios.get('/student/'+params.id + '?name=' +params.name).then((response)=>{
         context.commit('StudentsList', response.data)

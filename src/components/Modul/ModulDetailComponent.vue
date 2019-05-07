@@ -16,7 +16,7 @@
                 <b-form-input type="text" 
                             name="text"
                             v-model="Modul.informe"
-                            placeholder="Ingresa el año">
+                            placeholder="dd/mm/yyyy">
                 </b-form-input>
             </b-form-group>
 
@@ -24,7 +24,7 @@
                 <b-form-input type="text" 
                             name="text"
                             v-model="Modul.memorandum"
-                            placeholder="Ingresa el año">
+                            placeholder="dd/mm/yyyy">
                 </b-form-input>
             </b-form-group>
 
@@ -32,7 +32,7 @@
                 <b-form-input type="text" 
                             name="text"
                             v-model="Modul.solicitud"
-                            placeholder="Ingresa el año">
+                            placeholder="dd/mm/yyyy">
                 </b-form-input>
             </b-form-group>
 

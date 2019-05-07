@@ -38,6 +38,11 @@ export default new Router({
           name: 'modul.detail',
           component: () => import('./components/Modul/ModulDetailComponent.vue'),
           props: true,
+        },
+        {
+          path:'/buscar',
+          name: 'buscar',
+          component: () => import('./components/Student/StudentSearchComponent.vue'),
         }
       ]
     },

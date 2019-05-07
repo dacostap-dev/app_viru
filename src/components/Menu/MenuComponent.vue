@@ -24,9 +24,14 @@ export default {
                  },
                  {
                     "id": 3,
+                    "title" : 'Buscar Alumno',
+                    "ruta" : 'buscar'
+                 },    
+                 {
+                    "id": 4,
                     "title" : 'Salir',
                     "ruta" : 'exit'
-                 },  
+                 },
                  ]
                         
         }

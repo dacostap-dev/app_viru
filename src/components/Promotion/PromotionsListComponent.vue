@@ -13,10 +13,12 @@
 
       </b-row>
       <b-row>
-        <b-card-group class="mt-4" columns>
-          <Promotion v-for="promo in promotions" :key="promo.id" :promo="promo">
-          </Promotion>
-        </b-card-group> 
+        <b-col cols="">
+          <b-card-group class="mt-4" columns>
+            <Promotion v-for="promo in promotions" :key="promo.id" :promo="promo">
+            </Promotion>
+          </b-card-group> 
+        </b-col>   
       </b-row>
     </b-container>
 
