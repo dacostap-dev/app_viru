@@ -63,8 +63,10 @@ export default {
            this.alumno = Object.assign({}, this.stu);
         },
         selectStudent(){
-           this.$router.push('/promotions/'+ this.$route.params.id + '/'+ this.stu.name.replace(' ', ''));
+           this.$store.commit('StudentSelected', this.stu)
            this.$store.dispatch('getModuls', this.stu)
+           this.$router.push('/promotions/'+ this.$route.params.id + '/'+ this.stu.name.replace(' ', ''));
+          
         },
         showModal() {
           this.$refs['modal_update'].show()

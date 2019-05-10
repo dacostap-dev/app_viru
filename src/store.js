@@ -62,8 +62,6 @@ export default new Vuex.Store({
     getModuls(context, stu){
       return axios.get('/modul/'+ stu.id).then((response)=>{
         context.commit('ModulsList', response.data)
-        context.commit('StudentSelected', stu)
-        console.log(stu)
       })
     },
     getStudents(context, promo_id){
