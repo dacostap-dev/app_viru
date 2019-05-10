@@ -9,8 +9,11 @@
           <b-col cols="4">
             <b-button @click="showModal()" variant="outline-primary">Añadir nuevo modulo</b-button>
           </b-col>
-      
         </b-row>
+        <b-row>
+         <b-button class="ml-2" @click="back()"><i class="fas fa-arrow-circle-left"></i> Regresar</b-button>  
+        </b-row>
+          
 
         <b-row>
             <b-card-group class="mt-4">
@@ -57,6 +60,10 @@ export default {
       }
     },
     methods:{
+      back(){
+        this.$router.push('/promotions/'+ this.promotionSelected.id);   
+        this.$store.dispatch('getStudents', this.promotionSelected.id)
+      },
       showModal(){
         this.$refs['modul_register'].show()
       },
@@ -92,7 +99,7 @@ export default {
 
     },
     computed: {
-        ...mapState(['moduls', 'studentSelected'])
+        ...mapState(['moduls', 'studentSelected', 'promotionSelected'])
     }
 }
 </script>

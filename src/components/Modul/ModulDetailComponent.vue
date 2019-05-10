@@ -2,7 +2,7 @@
     <div>
         <b-col cols="11">
             <h1>Detalle del {{Modul.name}}</h1>
-                
+
             <b-form class="m-3"  @submit.prevent="updateModul()">
             <b-form-group label-cols="5" label="Nombre:">
                 <b-form-input type="text" required
@@ -44,7 +44,8 @@
                 ></b-form-radio-group>
             </b-form-group>
 
-            <b-button type="submit" variant="primary">Submit</b-button>
+            <b-button class="mr-2" type="submit" variant="primary">Guardar</b-button>
+            <b-button @click="back()"><i class="fas fa-arrow-circle-left"></i> Cancelar</b-button>  
         
             </b-form>
         </b-col>
@@ -73,10 +74,14 @@ export default {
         },
         updateModul(){
             this.$store.dispatch('updateModul', this.Modul)
+        },
+        back(){
+           this.$store.dispatch('getModuls', this.studentSelected)
+           this.$router.push('/promotions/'+ this.promotionSelected.id + '/'+ this.studentSelected.name.replace(' ', ''));
         }
     },
     computed:{
-        ...mapState(['modulSelected'])
+        ...mapState(['modulSelected', 'promotionSelected', 'studentSelected'])
     }
 }
 </script>
