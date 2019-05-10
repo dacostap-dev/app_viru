@@ -2,9 +2,10 @@
 
   <div>
     <b-container>
-      <b-row>
+      <h1 class="display-5 text-left ml-4">Promoción: {{promotionSelected.name}} </h1>
+      <b-row align-h="center">
 
-        <b-input-group >
+        <b-input-group style="width: 41rem;">
             <b-form-input @keyup.enter="filter()" type="text" v-model="search" placeholder="Buscador..">
             </b-form-input>
           <b-input-group-append>
@@ -13,7 +14,7 @@
         </b-input-group>
 
       </b-row>
-      <b-row class="mt-2">
+      <b-row class="mt-2 ml-4">
         <b-button  @click="showModal" variant="outline-primary">Añadir nuevo alumno <i class="fas fa-plus-square"></i></b-button>
       </b-row>
 
@@ -37,6 +38,10 @@
 
               <b-form-group label-align="left" label-cols="4" label-cols-lg="3" label="Nombre:">
               <b-form-input  v-model="nombre" :state="nameState" required></b-form-input>
+              </b-form-group>
+
+               <b-form-group label-align="left" label-cols="4" label-cols-lg="3" label="Apellidos:">
+              <b-form-input  v-model="apellido" :state="apellidoState" required></b-form-input>
               </b-form-group>
 
                <b-form-group label-align="left" label-cols="4" label-cols-lg="3" label="Email:">
@@ -70,9 +75,12 @@ export default {
       return{
         search: '',
         nombre: '',
+        apellido: '',
+        nombreCompleto: '',
         email: '',
         genero : '',
         nameState: null,
+        apellidoState: null,
         emailState: null,
         generoState: null,
 
@@ -100,6 +108,7 @@ export default {
       },
       handleOk(bvModalEvt) {
         this.nameState = null
+        this.apellidoState = null
         this.emailState = null
         this.generoState = null
         bvModalEvt.preventDefault()
@@ -111,8 +120,8 @@ export default {
         if (!this.checkFormValidity()) {
           return
         }
-
-        this.$store.dispatch('postStudent', {name: this.nombre, email: this.email, genero: this.genero, promotion_id: this.promotionSelected.id})
+        this.nombreCompleto = this.apellido + ' ' + this.nombre 
+        this.$store.dispatch('postStudent', {name: this.nombreCompleto, email: this.email, genero: this.genero, promotion_id: this.promotionSelected.id})
 
         
         this.$nextTick(() => {
@@ -124,6 +133,10 @@ export default {
         console.log(valid)
         if(this.nombre==''){
           this.nameState = valid 
+        }
+      
+        if(this.apellido==''){
+          this.apellidoState = valid 
         }
 
         if(this.email==''){
@@ -138,6 +151,8 @@ export default {
       resetModal() {
         this.nombre = ''
         this.nameState = null
+        this.apellido = ''
+        this.apellidoState = null
         this.email = ''
         this.emailState = null
         this.genero = ''

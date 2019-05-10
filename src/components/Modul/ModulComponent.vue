@@ -1,6 +1,6 @@
 <template>
     <div>
-          <b-card @click="selectModul"
+          <b-card class="ml-2" @click="selectModul"
             header="Modul"
             :border-variant="color"
             header-text-variant="white"
@@ -10,7 +10,7 @@
             style="max-width: 20rem;"
             >
             <b-card-text>
-             Asesor - {{modul.asesor}}
+            {{color == 'danger' ? 'Incompleto' : 'Completado'}} 
             </b-card-text>
 
           </b-card>

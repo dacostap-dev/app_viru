@@ -1,12 +1,19 @@
 <template>
     <div>
       <b-container>
+       
         <b-row>
-          <b-button @click="showModal()" variant="outline-primary">Añadir nuevo modulo</b-button>
+          <b-col cols="8">
+            <h2 class="display-5 text-left">Alumno: {{studentSelected.name}}</h2>
+          </b-col>
+          <b-col cols="4">
+            <b-button @click="showModal()" variant="outline-primary">Añadir nuevo modulo</b-button>
+          </b-col>
+      
         </b-row>
 
         <b-row>
-            <b-card-group class="mt-4" columns>
+            <b-card-group class="mt-4">
               <Modul v-for="modul in moduls" :key="modul.id" :modul="modul" />
             </b-card-group> 
         </b-row>
