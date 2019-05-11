@@ -2,7 +2,6 @@
     <div>
         <b-col cols="11">
             <h1>Detalle del {{Modul.name}}</h1>
-
             <b-form class="m-3"  @submit.prevent="updateModul()">
             <b-form-group label-cols="5" label="Nombre:">
                 <b-form-input type="text" required
@@ -49,8 +48,6 @@
         
             </b-form>
         </b-col>
-        
-       
     </div>
 </template>
 <script>
@@ -78,10 +75,10 @@ export default {
         back(){
            this.$store.dispatch('getModuls', this.studentSelected)
            this.$router.push('/promotions/'+ this.promotionSelected.id + '/'+ this.studentSelected.name.replace(' ', ''));
-        }
+        },
     },
     computed:{
-        ...mapState(['modulSelected', 'promotionSelected', 'studentSelected'])
+        ...mapState(['modulSelected', 'promotionSelected', 'studentSelected']),
     }
 }
 </script>

@@ -5,6 +5,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import BootstrapVue from 'bootstrap-vue'
+import JsonExcel from 'vue-json-excel'
+
+Vue.component('downloadExcel', JsonExcel)
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue);

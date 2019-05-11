@@ -14,6 +14,13 @@
          <b-button class="ml-2" @click="back()"><i class="fas fa-arrow-circle-left"></i> Regresar</b-button>  
         </b-row>
           
+        <download-excel
+            :data = "datosExcel"
+            :title = "titulo"
+             name = "Modulo.xls">
+            Descargar Datos
+           <i class="fas fa-download"></i>
+        </download-excel>
 
         <b-row>
             <b-card-group class="mt-4">
@@ -99,7 +106,20 @@ export default {
 
     },
     computed: {
-        ...mapState(['moduls', 'studentSelected', 'promotionSelected'])
+        ...mapState(['moduls', 'studentSelected', 'promotionSelected']),
+         datosExcel(){
+            var array = []
+            if(this.moduls){ // para evitar que salte un error al no encontrar modulos por la demora de la petición ajax
+               this.moduls.forEach(function(modul){
+                    array.push({'Nombre del Módulo': modul.name, 'Fecha de informe': modul.informe, 'Fecha de Memorandum': modul.memorandum, 'Fecha de Recibo': modul.recibo == 1 ? 'Si' : 'No', 'Fecha de Solicitud': modul.solicitud})
+                })
+            }
+               
+            return array
+        },
+        titulo(){
+            return 'Alumno: ' + this.studentSelected.name
+        }
     }
 }
 </script>
