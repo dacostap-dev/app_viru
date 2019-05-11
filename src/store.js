@@ -13,7 +13,8 @@ export default new Vuex.Store({
     studentSelected: null,
     modulSelected: null,
     students: [],
-    moduls: []
+    moduls: [],
+    errors: []
   },
   mutations: {
     ModulsList(state, modul){
@@ -33,6 +34,9 @@ export default new Vuex.Store({
     },
     StudentsList(state, students){
       state.students = students
+    },
+    errorsList(state, error){
+      state.errors = error
     }
   },
   actions: {
@@ -87,7 +91,12 @@ export default new Vuex.Store({
       return axios.get('/promotion').then((response)=>{
         context.commit('PromotionsList', response.data)
         console.log(response.data)
-      })
+      }).catch(function (error){
+          if(error.response && error.response.status === 500){
+            context.commit('errorsList', error.response.status)
+            console.log('se produjo error 500')
+          }
+      });
     },
     getPromotionsFiltered(context,name){
       return axios.get('/promotion?name='+ name).then((response)=>{

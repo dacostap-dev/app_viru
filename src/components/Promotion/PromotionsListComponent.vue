@@ -21,6 +21,7 @@
       </b-row>
     </b-container>
 
+   <p class="mt-5" v-if="errors === 500">No se pudo conectar al servidor</p>
   </div>
   
 
@@ -51,7 +52,7 @@ export default {
     }
   },
   computed:{
-       ...mapState(['promotions']),
+       ...mapState(['promotions', 'errors']),
 
   }
 }
