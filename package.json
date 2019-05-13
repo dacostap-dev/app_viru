@@ -16,6 +16,8 @@
     "axios": "^0.18.0",
     "bootstrap-vue": "^2.0.0-rc.18",
     "core-js": "^2.6.5",
+    "jspdf": "^1.5.3",
+    "jspdf-autotable": "^3.1.1",
     "vue": "^2.6.10",
     "vue-json-excel": "^0.2.98",
     "vue-router": "^3.0.3",

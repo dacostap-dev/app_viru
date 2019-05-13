@@ -11,26 +11,32 @@
           </b-col>
         </b-row>
         <b-row>
-         <b-button class="ml-2" @click="back()"><i class="fas fa-arrow-circle-left"></i> Regresar</b-button>  
+         <b-button class="ml-2" @click="back()"><i class="fas fa-arrow-circle-left"></i> Regresar</b-button>
+         <b-button v-if="moduls.length !== 0" class="ml-2" @click="pdf">Exportar PDF</b-button>  
         </b-row>
           
-        <download-excel
-            :data = "datosExcel"
-            :title = "titulo"
-             name = "Modulo.xls">
-            Descargar Datos
-           <i class="fas fa-download"></i>
-        </download-excel>
-
-        <b-row>
-            <b-card-group class="mt-4">
+     
+        <b-row v-if="moduls.length !== 0">
+            <b-card-group  class="mt-4">
               <Modul v-for="modul in moduls" :key="modul.id" :modul="modul" />
-            </b-card-group> 
+            </b-card-group>
+
+        </b-row>
+
+        <p v-else class="text-center mt-5 mb-5">No tiene Modulos</p> 
+
+        <b-row class="m-2">
+          <download-excel
+              :data = "datosExcel"
+              :title = "titulo"
+              name = "Modulo.xls">
+              Descargar Datos
+            <i class="fas fa-download"></i>
+          </download-excel>
         </b-row>
     
          <b-modal 
           @show="resetModal"
-          @hidden="resetModal"
           @ok="handleOk"
           ref="modul_register" centered title="Agregar Modulo">
             <b-form class="m-3"  ref="form" @submit.stop.prevent="handleSubmit">
@@ -45,8 +51,12 @@
     </div>
 </template>
 <script>
+
 import Modul from "@/components/Modul/ModulComponent.vue";
 import {mapState} from "vuex";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
 export default {
     props:['name'],
     components:{
@@ -56,7 +66,7 @@ export default {
       return{
         nombre: null,
         nameState: null,
-          options: [
+        options: [
           { value: null, text: 'Seleccione un Modulo' },
           { value: 'Modulo 1', text: 'Modulo 1' },
           { value: 'Modulo 2', text: 'Modulo 2' },
@@ -67,6 +77,34 @@ export default {
       }
     },
     methods:{
+      pdf(){
+            var array = []
+                if(this.moduls){ // para evitar que salte un error al no encontrar modulos por la demora de la petición ajax
+                  this.moduls.forEach(function(modul){
+                        array.push({'name': modul.name, 'informe': modul.informe, 'memo': modul.memorandum, 'recibo': modul.recibo == 1 ? 'Si' : 'No', 'solicitud': modul.solicitud})
+                    })
+                }
+            let columns = [
+               {title: 'Nombre', dataKey: "name"}, 
+               {title: 'Fecha de Informe', dataKey: "informe"},
+               {title: 'Fecha de Memorandum', dataKey: "memo"},
+               {title: 'Tiene Recibo', dataKey: "recibo"},  
+               {title: 'Fecha de Solicitud', dataKey: "solictud"}, 
+            ];
+            
+            let doc = new jsPDF();
+            doc.text('Alumno: ' + this.studentSelected.name, 10, 10);
+            doc.autoTable(columns, array, {     
+              styles: {halign: 'center',
+              lineColor: [44, 62, 80],
+              lineWidth: 0.15},
+              
+            //  columnStyles: {Nombre: {halign: 'center', fillColor: [0, 255, 0]}}, // Cells in first column centered and green
+              margin: {top: 25},
+                  
+            })
+            doc.save("Modulos_" + this.studentSelected.name +".pdf");
+      },
       back(){
         this.$router.push('/promotions/'+ this.promotionSelected.id);   
         this.$store.dispatch('getStudents', this.promotionSelected.id)
@@ -111,7 +149,7 @@ export default {
             var array = []
             if(this.moduls){ // para evitar que salte un error al no encontrar modulos por la demora de la petición ajax
                this.moduls.forEach(function(modul){
-                    array.push({'Nombre del Módulo': modul.name, 'Fecha de informe': modul.informe, 'Fecha de Memorandum': modul.memorandum, 'Fecha de Recibo': modul.recibo == 1 ? 'Si' : 'No', 'Fecha de Solicitud': modul.solicitud})
+                    array.push({'Nombre del Módulo': modul.name, 'Fecha de informe': modul.informe, 'Fecha de Memorandum': modul.memorandum, 'Tiene Recibo': modul.recibo == 1 ? 'Si' : 'No', 'Fecha de Solicitud': modul.solicitud})
                 })
             }
                
