@@ -20,7 +20,9 @@
 
       <b-row class="mt-2 justify-content-md-center">
 
-         <b-list-group style="width: 40rem;">
+        <Loading id="load" v-if="loading * load"/>
+
+         <b-list-group v-else style="width: 40rem;">
 
              <Student v-for="stu in students" :key="stu.id" :stu="stu">
              </Student>   
@@ -69,10 +71,13 @@
 <script>
 import {mapState} from "vuex";
 import Student from "@/components/Student/StudentComponent.vue";
+import Loading from "@/components/partials/loading.vue";
+import { setTimeout } from 'timers';
 
 export default {
     data(){
       return{
+        load: true,
         search: '',
         nombre: '',
         apellido: '',
@@ -91,13 +96,25 @@ export default {
       }
     },
     components: {
-        Student
+        Student,
+        Loading
     },
     mounted(){
         this.$store.commit('ModulsList', '')
     },
+    created(){
+      setTimeout(function(){
+        document.getElementById('load').classList.add('d-none')
+      }, 3000)
+    },
     computed:{
-        ...mapState(['promotionSelected','students'])    
+        ...mapState(['promotionSelected','students']),
+        loading(){
+          if(this.students.length >= 1){
+            return false
+          }
+          return true
+        },    
     },
     methods:{
       filter(){
