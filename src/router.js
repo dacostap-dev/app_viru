@@ -9,8 +9,13 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'login',
+      component: () => import('./views/Login.vue'), //Home.vue
+    },
+    {
+      path:'/home',
       name: 'home',
-      component: () => import('./views/Home.vue'),
+      component: () => import('./views/Home.vue'), //Home.vue
       children: [
         {
           path: 'create',
@@ -43,8 +48,13 @@ export default new Router({
           path:'/buscar',
           name: 'buscar',
           component: () => import('./components/Student/StudentSearchComponent.vue'),
-        }
+        },
+        {
+          path:'/salir',
+          name: 'exit',
+          component: () => import('./components/Auth/Logout.vue'),
+        },
       ]
-    },
+    }
   ]
 })

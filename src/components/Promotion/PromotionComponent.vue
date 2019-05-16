@@ -56,7 +56,7 @@ export default {
     methods: {
       selectPromotion(){
       console.log(this.promo.id)
-      this.$router.push('/promotions/'+ this.promo.id);
+      this.$router.push('/home/promotions/'+ this.promo.id);
       this.$store.commit('PromotionSelected', this.promo);
       this.$store.dispatch('getStudents', this.promo.id)
       },

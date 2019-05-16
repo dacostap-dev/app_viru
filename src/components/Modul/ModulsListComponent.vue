@@ -106,7 +106,7 @@ export default {
             doc.save("Modulos_" + this.studentSelected.name +".pdf");
       },
       back(){
-        this.$router.push('/promotions/'+ this.promotionSelected.id);   
+        this.$router.push('/home/promotions/'+ this.promotionSelected.id);   
         this.$store.dispatch('getStudents', this.promotionSelected.id)
       },
       showModal(){

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
+
 Vue.use(Vuex, axios)
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
@@ -14,7 +15,8 @@ export default new Vuex.Store({
     modulSelected: null,
     students: [],
     moduls: [],
-    errors: []
+    errors: [],
+    token: localStorage.getItem('token') || null
   },
   mutations: {
     ModulsList(state, modul){
@@ -37,9 +39,32 @@ export default new Vuex.Store({
     },
     errorsList(state, error){
       state.errors = error
+    },
+    NuevoToken(state, token){
+      state.token = token
     }
   },
   actions: {
+    solicitarToken(context, credentials){
+      return new Promise((resolve, reject) => {
+        return axios.post('/login', {
+          email: credentials.email, 
+          password: credentials.password
+        })
+          .then(response => {
+            const token = response.data.token
+            localStorage.setItem('token', token)
+            context.commit('NuevoToken', token)
+            resolve(response)
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token; // Luego de logearse se utilizara el token en el header para todas los request
+        }).catch(error => {
+            if(error.response && error.response.status === 400){
+              console.log('Usuario Incorrecto')
+            }
+            reject(error)
+        })
+      })
+    },
     eliminarStudent(context, params){
       return axios.delete('/student/' +params.id).then((response)=>{
         this.dispatch('getStudents', params.promotion_id)

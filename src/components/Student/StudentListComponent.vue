@@ -72,7 +72,6 @@
 import {mapState} from "vuex";
 import Student from "@/components/Student/StudentComponent.vue";
 import Loading from "@/components/partials/loading.vue";
-import { setTimeout } from 'timers';
 
 export default {
     data(){
@@ -101,11 +100,6 @@ export default {
     },
     mounted(){
         this.$store.commit('ModulsList', '')
-    },
-    created(){
-      setTimeout(function(){
-        document.getElementById('load').classList.add('d-none')
-      }, 3000)
     },
     computed:{
         ...mapState(['promotionSelected','students']),
