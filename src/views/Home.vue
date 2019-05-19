@@ -23,6 +23,9 @@
 import Menu from '@/components/Menu/MenuComponent.vue'
 
 export default {
+  beforeCreate: function() {
+        document.body.className = 'home';
+  },
   name: 'home',
   components: {
     Menu

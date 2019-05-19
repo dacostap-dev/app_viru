@@ -59,6 +59,7 @@ export default new Vuex.Store({
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token; // Luego de logearse se utilizara el token en el header para todas los request
         }).catch(error => {
             if(error.response && error.response.status === 400){
+              context.commit('errorsList', error.response.status)
               console.log('Usuario Incorrecto')
             }
             reject(error)
