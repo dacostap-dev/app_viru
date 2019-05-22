@@ -81,7 +81,13 @@ export default {
             var array = []
                 if(this.moduls){ // para evitar que salte un error al no encontrar modulos por la demora de la petición ajax
                   this.moduls.forEach(function(modul){
-                        array.push({'name': modul.name, 'informe': modul.informe, 'memo': modul.memorandum, 'recibo': modul.recibo == 1 ? 'Si' : 'No', 'solicitud': modul.solicitud})
+                        array.push({'name': modul.name, 
+                        'informe': modul.informe, 
+                        'memo': modul.memorandum, 
+                        'recibo': modul.recibo == 1 ? 'Si' : 'No', 
+                        'solicitud': modul.solicitud, 
+                        'f_supervision': modul.f_supervision, 
+                        'f_evaluacion': modul.f_evaluacion})
                     })
                 }
             let columns = [
@@ -89,10 +95,12 @@ export default {
                {title: 'Fecha de Informe', dataKey: "informe"},
                {title: 'Fecha de Memorandum', dataKey: "memo"},
                {title: 'Tiene Recibo', dataKey: "recibo"},  
-               {title: 'Fecha de Solicitud', dataKey: "solictud"}, 
+               {title: 'Fecha de Solicitud', dataKey: "solicitud"},
+               {title: 'Ficha de Supervisión', dataKey: "f_supervision"}, 
+               {title: 'Ficha de Evaluación', dataKey: "f_evaluacion"},  
             ];
             
-            let doc = new jsPDF();
+            let doc = new jsPDF('landscape');
             doc.text('Alumno: ' + this.studentSelected.name, 10, 10);
             doc.autoTable(columns, array, {     
               styles: {halign: 'center',
@@ -149,7 +157,13 @@ export default {
             var array = []
             if(this.moduls){ // para evitar que salte un error al no encontrar modulos por la demora de la petición ajax
                this.moduls.forEach(function(modul){
-                    array.push({'Nombre del Módulo': modul.name, 'Fecha de informe': modul.informe, 'Fecha de Memorandum': modul.memorandum, 'Tiene Recibo': modul.recibo == 1 ? 'Si' : 'No', 'Fecha de Solicitud': modul.solicitud})
+                    array.push({'Nombre del Módulo': modul.name, 
+                    'Fecha de informe': modul.informe, 
+                    'Fecha de Memorandum': modul.memorandum, 
+                    'Tiene Recibo': modul.recibo == 1 ? 'Si' : 'No', 
+                    'Fecha de Solicitud': modul.solicitud, 
+                    'Ficha de Supervisión': modul.f_supervision, 
+                    'Fecha de Evaluación': modul.f_evaluacion})
                 })
             }
                

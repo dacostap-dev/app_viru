@@ -35,6 +35,22 @@
                 </b-form-input>
             </b-form-group>
 
+            <b-form-group label-cols="5"  label="Ficha de Supervisión:">
+                <b-form-input type="text" 
+                            name="text"
+                            v-model="Modul.f_supervision"
+                            placeholder="dd/mm/yyyy">
+                </b-form-input>
+            </b-form-group>
+
+                <b-form-group label-cols="5"  label="Ficha de Evaluación:">
+                <b-form-input type="text" 
+                            name="text"
+                            v-model="Modul.f_evaluacion"
+                            placeholder="dd/mm/yyyy">
+                </b-form-input>
+            </b-form-group>
+
             <b-form-group class="text" label="Tiene Recibo">
                 <b-form-radio-group
                     v-model="Modul.recibo"

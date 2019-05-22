@@ -29,20 +29,12 @@ export default {
     },
     computed:{
       color(){
-        if(this.modul.informe == ''){
-          return 'danger'
-        }
-        if(this.modul.memorandum == ''){
-          return 'danger'
-        }
-        if(this.modul.solicitud == ''){
-          return 'danger'
-        }
-        if(this.modul.recibo == '0'){
-          return 'danger'
-        }
-         return 'primary'
+        if(this.modul.informe == null|| this.modul.memorandum == null || this.modul.solicitud == null|| this.modul.f_supervision == null||this.modul.f_evaluacion == null||this.modul.recibo == '0'){
+          return 'danger'      
+        }else{
+        return 'primary'
       }
-    }
+     }
+   } 
 }
 </script>
