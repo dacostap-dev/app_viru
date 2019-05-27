@@ -29,7 +29,7 @@ export default {
     },
     computed:{
       color(){
-        if(this.modul.informe == null|| this.modul.memorandum == null || this.modul.solicitud == null|| this.modul.f_supervision == null||this.modul.f_evaluacion == null||this.modul.recibo == '0'){
+        if(this.modul.informe == null|| this.modul.memorandum == null || this.modul.solicitud == null|| this.modul.proyecto == '0'|| this.modul.f_supervision == '0'||this.modul.f_evaluacion == null||this.modul.recibo == '0'){
           return 'danger'      
         }else{
         return 'primary'

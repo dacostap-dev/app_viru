@@ -1,9 +1,10 @@
 <template>
     <div>
-        <b-col cols="11">
+        <b-row class="justify-content-md-center">
+        <b-col cols="8">
             <h1>Detalle del {{Modul.name}}</h1>
             <b-form class="m-3"  @submit.prevent="updateModul()">
-            <b-form-group label-cols="5" label="Nombre:">
+            <b-form-group label-align="left"  label-cols="5" label="Nombre:">
                 <b-form-input type="text" required
                             name="name"
                             v-model="Modul.name"
@@ -11,7 +12,7 @@
                 </b-form-input>
             </b-form-group>
 
-            <b-form-group label-cols="5"  label="Fecha de Informe:">
+            <b-form-group  label-align="left" label-cols="5"  label="Informe/Horas:">
                 <b-form-input type="text" 
                             name="text"
                             v-model="Modul.informe"
@@ -19,7 +20,7 @@
                 </b-form-input>
             </b-form-group>
 
-             <b-form-group label-cols="5"  label="Fecha de Memorandum:">
+             <b-form-group label-align="left"  label-cols="5"  label="Fecha de Memorandum:">
                 <b-form-input type="text" 
                             name="text"
                             v-model="Modul.memorandum"
@@ -27,7 +28,7 @@
                 </b-form-input>
             </b-form-group>
 
-             <b-form-group label-cols="5"  label="Fecha de Solicitud:">
+             <b-form-group label-align="left"  label-cols="5"  label="Fecha de Solicitud:">
                 <b-form-input type="text" 
                             name="text"
                             v-model="Modul.solicitud"
@@ -35,15 +36,8 @@
                 </b-form-input>
             </b-form-group>
 
-            <b-form-group label-cols="5"  label="Ficha de Supervisión:">
-                <b-form-input type="text" 
-                            name="text"
-                            v-model="Modul.f_supervision"
-                            placeholder="dd/mm/yyyy">
-                </b-form-input>
-            </b-form-group>
 
-                <b-form-group label-cols="5"  label="Ficha de Evaluación:">
+            <b-form-group label-align="left"  label-cols="5"  label="Ficha de Evaluación:">
                 <b-form-input type="text" 
                             name="text"
                             v-model="Modul.f_evaluacion"
@@ -51,12 +45,26 @@
                 </b-form-input>
             </b-form-group>
 
-            <b-form-group class="text" label="Tiene Recibo">
-                <b-form-radio-group
-                    v-model="Modul.recibo"
-                    :options="options"
-                    name="radio-inline"
-                ></b-form-radio-group>
+            <b-form-group label-align="left" label="Otras opciones: ">
+             <b-row class="justify-content-md-center">
+               
+                    <b-form-checkbox class="mxy-2 my-2" id="proyecto" v-model="Modul.proyecto" name="proyecto" value="1" unchecked-value="0">
+                        Tiene Proyecto
+                    </b-form-checkbox>
+                
+               
+                    <b-form-checkbox class="mx-2 my-2" id="recibo" v-model="Modul.recibo" name="recibo" value="1" unchecked-value="0">
+                        Tiene Recibo
+                    </b-form-checkbox>
+              
+                    <b-form-checkbox class="mx-2 my-2" id="supervision" v-model="Modul.f_supervision" name="supervision" value="1" unchecked-value="0">
+                        Ficha de Supervision
+                    </b-form-checkbox>
+               
+             </b-row>
+          
+
+  
             </b-form-group>
 
             <b-button class="mr-2" type="submit" variant="primary">Guardar</b-button>
@@ -64,6 +72,7 @@
         
             </b-form>
         </b-col>
+        </b-row>
     </div>
 </template>
 <script>

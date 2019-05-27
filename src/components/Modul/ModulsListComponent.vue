@@ -83,17 +83,19 @@ export default {
                   this.moduls.forEach(function(modul){
                         array.push({'name': modul.name, 
                         'informe': modul.informe, 
-                        'memo': modul.memorandum, 
+                        'memo': modul.memorandum,
+                        'project': modul.proyecto == 1 ? 'Si' : 'No',  
                         'recibo': modul.recibo == 1 ? 'Si' : 'No', 
                         'solicitud': modul.solicitud, 
-                        'f_supervision': modul.f_supervision, 
+                        'f_supervision': modul.f_supervision == 1 ? 'Si' : 'No', 
                         'f_evaluacion': modul.f_evaluacion})
                     })
                 }
             let columns = [
                {title: 'Nombre', dataKey: "name"}, 
-               {title: 'Fecha de Informe', dataKey: "informe"},
+               {title: 'Informe/Horas', dataKey: "informe"},
                {title: 'Fecha de Memorandum', dataKey: "memo"},
+               {title: 'Proyecto', dataKey: "project"},
                {title: 'Tiene Recibo', dataKey: "recibo"},  
                {title: 'Fecha de Solicitud', dataKey: "solicitud"},
                {title: 'Ficha de Supervisión', dataKey: "f_supervision"}, 
@@ -158,11 +160,12 @@ export default {
             if(this.moduls){ // para evitar que salte un error al no encontrar modulos por la demora de la petición ajax
                this.moduls.forEach(function(modul){
                     array.push({'Nombre del Módulo': modul.name, 
-                    'Fecha de informe': modul.informe, 
+                    'Informe/horas': modul.informe, 
                     'Fecha de Memorandum': modul.memorandum, 
+                    'Proyecto': modul.proyecto == 1 ? 'Si' : 'No', 
                     'Tiene Recibo': modul.recibo == 1 ? 'Si' : 'No', 
                     'Fecha de Solicitud': modul.solicitud, 
-                    'Ficha de Supervisión': modul.f_supervision, 
+                    'Ficha de Supervisión': modul.f_supervision == 1 ? 'Si' : 'No', 
                     'Fecha de Evaluación': modul.f_evaluacion})
                 })
             }
