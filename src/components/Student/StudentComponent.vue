@@ -3,7 +3,8 @@
         <b-list-group-item @click="selectStudent()">
                 <b-row class="" align-h="center">
                     <b-col cols="2" md="2" class="text-center">
-                        <b-img :src="stu.genero === 'female' ? female : male" rounded="circle" width="60" height="60" class="m-1" />
+                        <b-img v-if="stu.genero === 'female'" src="@/users/avatar-female.png" rounded="circle" width="60" height="60" class="m-1" />
+                        <b-img v-else src="@/users/avatar-male.png" rounded="circle" width="60" height="60" class="m-1" />
                     </b-col>
                     <b-col cols="6" align-self="center" class="d-none d-md-block">
                         <p class="mb-1">
@@ -102,13 +103,5 @@ export default {
             this.nameState = null
         }
     },
-    computed:{
-        female(){
-            return `http://www.mwattorneys.com/wp-content/uploads/avatar-female.png`
-        },
-        male(){
-            return `https://images.vexels.com/media/users/3/129616/isolated/preview/fb517f8913bd99cd48ef00facb4a67c0-businessman-avatar-silhouette-by-vexels.png`
-        }
-    }
 }
 </script>

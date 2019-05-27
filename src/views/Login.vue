@@ -7,7 +7,7 @@
       <label for="inputPassword" class="sr-only">Password</label>
       <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
       <b-alert v-if="errors==400" variant="danger" show>Usuario Incorrecto</b-alert>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit"><b-spinner v-if="bandera" small type="grow"></b-spinner> Ingresar</button>
     </form>
   </div>
 </template>
@@ -21,15 +21,18 @@ export default {
     data(){
         return {
             email: '',
-            password: ''
+            password: '',
+            bandera: false
         }
     },
     methods: {
         login(){
+            this.bandera = true
             this.$store.dispatch('solicitarToken', {
              email: this.email, 
              password: this.password
             }).then(response => {
+              this.bandera = false
               this.$router.push({name: 'home'})
               console.log(response)
             })
