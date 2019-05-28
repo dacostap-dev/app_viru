@@ -12,10 +12,10 @@
                 </b-form-input>
             </b-form-group>
 
-            <b-form-group  label-align="left" label-cols="5"  label="Informe/Horas:">
+            <b-form-group label-align="left"  label-cols="5"  label="Fecha de Solicitud:">
                 <b-form-input type="text" 
                             name="text"
-                            v-model="Modul.informe"
+                            v-model="Modul.solicitud"
                             placeholder="dd/mm/yyyy">
                 </b-form-input>
             </b-form-group>
@@ -28,15 +28,14 @@
                 </b-form-input>
             </b-form-group>
 
-             <b-form-group label-align="left"  label-cols="5"  label="Fecha de Solicitud:">
-                <b-form-input type="text" 
+            <b-form-group  label-align="left" label-cols="5"  label="Informe:">
+                <b-form-input type="number" 
                             name="text"
-                            v-model="Modul.solicitud"
-                            placeholder="dd/mm/yyyy">
+                            v-model="Modul.informe"
+                            placeholder="Horas">
                 </b-form-input>
             </b-form-group>
-
-
+         
             <b-form-group label-align="left"  label-cols="5"  label="Ficha de Evaluación:">
                 <b-form-input type="text" 
                             name="text"
@@ -67,8 +66,9 @@
   
             </b-form-group>
 
-            <b-button class="mr-2" type="submit" variant="primary">Guardar</b-button>
-            <b-button @click="back()"><i class="fas fa-arrow-circle-left"></i> Cancelar</b-button>  
+            <b-button @click="back()"><i class="fas fa-arrow-circle-left"></i> Atrás</b-button>  
+            <b-button class="ml-2" type="submit" variant="primary">Guardar</b-button>
+            
         
             </b-form>
         </b-col>

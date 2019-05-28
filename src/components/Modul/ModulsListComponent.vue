@@ -11,7 +11,7 @@
           </b-col>
         </b-row>
         <b-row>
-         <b-button class="ml-2" @click="back()"><i class="fas fa-arrow-circle-left"></i> Regresar</b-button>
+         <b-button class="ml-2" @click="back()"><i class="fas fa-arrow-circle-left"></i> Atrás</b-button>
          <b-button v-if="moduls.length !== 0" class="ml-2" @click="pdf">Exportar PDF</b-button>  
         </b-row>
           
@@ -92,14 +92,14 @@ export default {
                     })
                 }
             let columns = [
-               {title: 'Nombre', dataKey: "name"}, 
-               {title: 'Informe/Horas', dataKey: "informe"},
-               {title: 'Fecha de Memorandum', dataKey: "memo"},
-               {title: 'Proyecto', dataKey: "project"},
-               {title: 'Tiene Recibo', dataKey: "recibo"},  
+               {title: 'Nombre', dataKey: "name"},
                {title: 'Fecha de Solicitud', dataKey: "solicitud"},
-               {title: 'Ficha de Supervisión', dataKey: "f_supervision"}, 
+               {title: 'Fecha de Memorandum', dataKey: "memo"}, 
+               {title: 'Proyecto', dataKey: "project"},
+               {title: 'Informe/Horas', dataKey: "informe"},  
+               {title: 'Tiene Recibo', dataKey: "recibo"},  
                {title: 'Ficha de Evaluación', dataKey: "f_evaluacion"},  
+               {title: 'Ficha de Supervisión', dataKey: "f_supervision"},          
             ];
             
             let doc = new jsPDF('landscape');
@@ -159,14 +159,15 @@ export default {
             var array = []
             if(this.moduls){ // para evitar que salte un error al no encontrar modulos por la demora de la petición ajax
                this.moduls.forEach(function(modul){
-                    array.push({'Nombre del Módulo': modul.name, 
-                    'Informe/horas': modul.informe, 
-                    'Fecha de Memorandum': modul.memorandum, 
-                    'Proyecto': modul.proyecto == 1 ? 'Si' : 'No', 
+                    array.push({'Nombre del Módulo': modul.name,
+                    'Fecha de Solicitud': modul.solicitud,
+                    'Fecha de Memorandum': modul.memorandum,
+                    'Proyecto': modul.proyecto == 1 ? 'Si' : 'No',    
+                    'Informe/horas': modul.informe,             
                     'Tiene Recibo': modul.recibo == 1 ? 'Si' : 'No', 
-                    'Fecha de Solicitud': modul.solicitud, 
+                    'Fecha de Evaluación': modul.f_evaluacion,
                     'Ficha de Supervisión': modul.f_supervision == 1 ? 'Si' : 'No', 
-                    'Fecha de Evaluación': modul.f_evaluacion})
+                    })
                 })
             }
                
