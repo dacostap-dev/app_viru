@@ -20,7 +20,7 @@
 
       <b-row class="mt-2 justify-content-md-center">
 
-        <Loading id="load" v-if="loading * load"/>
+        <Loading v-if="load"/>
 
          <b-list-group v-else style="width: 40rem;">
 
@@ -29,6 +29,7 @@
       
         </b-list-group>
 
+        <p v-if="!load & students.length == 0" class="text-center mt-5 mb-5">No tiene Alumnos</p> 
       </b-row>
 
          <b-modal 
@@ -103,12 +104,9 @@ export default {
     },
     computed:{
         ...mapState(['promotionSelected','students']),
-        loading(){
-          if(this.students.length >= 1){
-            return false
-          }
-          return true
-        },    
+    },
+    created(){
+        this.$store.dispatch('getStudents', this.promotionSelected.id).then(()=> {this.load = false});
     },
     methods:{
       filter(){

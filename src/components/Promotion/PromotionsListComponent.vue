@@ -19,6 +19,8 @@
           </b-card-group> 
         </b-col>   
       </b-row>
+
+      <p v-if="load & promotions.length == 0" class="text-center mt-5 mb-5">No tiene Promociones</p> 
     </b-container>
 
    <p class="mt-5" v-if="errors === 500">No se pudo conectar al servidor</p>
@@ -31,19 +33,19 @@
 import {mapState} from "vuex";
 import Promotion from "@/components/Promotion/PromotionComponent.vue";
 
-
 export default {
    name: 'home',
    data(){
      return{
-       search: ''
+       search: '',
+       load: false
      }
    },
    components: {
-    Promotion
+    Promotion,
   },
   mounted(){
-    this.$store.dispatch('getPromotions');
+    this.$store.dispatch('getPromotions').then(()=>{this.load = true});
     this.$store.commit('StudentsList', '')
     },
   methods:{
@@ -53,7 +55,7 @@ export default {
   },
   computed:{
        ...mapState(['promotions', 'errors']),
-
+        
   }
 }
 </script>
