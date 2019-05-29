@@ -1,6 +1,6 @@
 <template>
     <div>
-         <b-list-group-item @click="select" :class = "{active: isActive}">{{option.title}}</b-list-group-item>
+         <b-list-group-item href="#" @click="select" :class = "{active: isActive}">{{option.title}}</b-list-group-item>
     </div>
 </template>
 <script>
@@ -10,11 +10,15 @@ export default {
          select(){
              let route = {name: this.option.ruta, params: {ruta: this.option.ruta}}
             this.$router.push(route);
+            this.$store.commit('OptionSelected', this.option)
         }
     },
     computed:{
         isActive(){
-            return this.option.ruta == this.$route.params.ruta;
+            if(this.$store.state.optionSelected){
+              return this.option.ruta == this.$store.state.optionSelected.ruta
+            }
+            return false
         }
     }
 }

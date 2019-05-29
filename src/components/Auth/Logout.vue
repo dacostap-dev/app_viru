@@ -11,7 +11,8 @@ export default {
         localStorage.removeItem('token'),
         this.$router.push({name: 'login'})
         this.$store.commit('PromotionsList', []); //limpiar las promociones por si se logea otro usuario despues
-        this.$store.commit('errorsList', []);
+       this.$store.commit('OptionSelected', null);
+       this.$store.commit('errorsList', []);
     }
     
 }

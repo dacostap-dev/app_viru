@@ -28,7 +28,7 @@
                 </b-form-input>
             </b-form-group>
 
-            <b-form-group  label-align="left" label-cols="5"  label="Informe:">
+            <b-form-group  label-align="left" label-cols="5"  label="Informe/Horas:">
                 <b-form-input type="number" 
                             name="text"
                             v-model="Modul.informe"
