@@ -1,27 +1,24 @@
 <template>
     <div>
-      <b-col cols="12">
-        <b-form class="m-2"  @submit.prevent="postPromotions">
-          <b-form-group label-cols="4" label-cols-lg="2" label="Nombre:">
-            <b-form-input type="text" required
-                          name="name"
-                          v-model="nombre"
-                          placeholder="Ingresa el nombre de la promoción">
-            </b-form-input>
-          </b-form-group>
+      <h4>Datos de la Promoción:</h4>
+      <b-row align-h="center"> 
+        <b-col cols="9">
+          <b-form class="m-2"  @submit.prevent="postPromotions">
+            <b-form-group label-cols="6" label-cols-lg="3" label="Nombre:">
+              <b-form-input type="text" required
+                            name="name"
+                            v-model="nombre"
+                            placeholder="Ingresa el nombre de la promoción">
+              </b-form-input>
+            </b-form-group>
 
-          <b-form-group label-cols="4" label-cols-lg="2" label="Fecha:">
-            <b-form-input type="text" 
-                          name="text"
-                          placeholder="Ingresa el año">
-            </b-form-input>
-          </b-form-group>
-
-          <b-button type="submit" variant="primary">Submit</b-button>
-    
-        </b-form>
+            <b-button type="submit" variant="primary">Crear</b-button>
       
-      </b-col>
+          </b-form>
+        
+        </b-col>
+      </b-row>
+
     </div>
 </template>
 <script>

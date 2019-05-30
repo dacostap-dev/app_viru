@@ -1,4 +1,16 @@
 module.exports = {
+    pluginOptions: {
+      electronBuilder: {
+        builderOptions: {
+          productName: 'Sistema de Gestión de Prácticas Modulares',
+          appId: 'com.app_viru.app',
+          artifactName: "${productName}-${version}-${arch}.${ext}",
+          win: {
+            icon: './icon.ico'
+          }
+        }
+      }
+    },
     chainWebpack: config => {
       config.module
         .rule('vue')

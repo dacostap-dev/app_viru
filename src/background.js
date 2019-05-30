@@ -21,7 +21,8 @@ function createWindow () {
      width: 1200, 
      height: 800,
      resizable: false,
-     show: true
+     title: 'Sistema de Gestión de Prácticas Modulares',
+     show: true,
      })
   
 

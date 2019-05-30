@@ -5,10 +5,11 @@ import axios from 'axios'
 
 Vue.use(Vuex, axios)
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'  //APIIIIII
+axios.defaults.baseURL = 'https://api-sistema.herokuapp.com/api/'  //APIIIIII
 
 export default new Vuex.Store({
   state: {
+    optionSelected: null,
     promotions: [],
     promotionSelected: null,
     studentSelected: null,
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     token: localStorage.getItem('token') || null
   },
   mutations: {
+    OptionSelected(state, option){
+      state.optionSelected = option
+    },
     ModulsList(state, modul){
       state.moduls = modul
     },
