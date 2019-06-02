@@ -13,10 +13,14 @@ export default new Router({
       component: () => import('./views/Login.vue'), //Home.vue
     },
     {
-      path:'/home',
-      name: 'home',
+      path:'/home', 
       component: () => import('./views/Home.vue'), //Home.vue
       children: [
+        {
+          path: '',
+          name: 'home',
+          component: () => import('./components/partials/Carousel.vue'),
+				},
         {
           path: 'create',
           name: 'create',
