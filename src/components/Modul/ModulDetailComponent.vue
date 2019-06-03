@@ -1,8 +1,8 @@
 <template>
     <div>
         <b-row class="justify-content-md-center">
-        <b-col cols="8">
-            <h1>Detalle del {{Modul.name}}</h1>
+        <b-col cols="9">
+            <h4 class="lead"><b>Detalle del {{Modul.name}}</b> </h4>
             <b-form class="m-3"  @submit.prevent="updateModul()">
             <b-form-group label-align="left"  label-cols="5" label="Nombre:">
                 <b-form-input type="text" required
@@ -66,8 +66,8 @@
   
             </b-form-group>
 
-            <b-button @click="back()"><i class="fas fa-arrow-circle-left"></i> Atrás</b-button>  
-            <b-button class="ml-2" type="submit" variant="primary">Guardar</b-button>
+            <b-button :disabled='btn' @click="back()"><i class="fas fa-arrow-circle-left"></i> Atrás</b-button>  
+            <b-button :disabled='btn' class="ml-2" type="submit" variant="primary">Guardar <i class="fas fa-save"></i></b-button>
             
         
             </b-form>
@@ -81,6 +81,7 @@ export default {
     data(){
         return{
             Modul: null,
+            btn: false,
             options: [
                 {text: 'Si', value: '1'},
                 {text: 'No', value: '0'},
@@ -95,7 +96,19 @@ export default {
             this.Modul = Object.assign({}, this.modulSelected);
         },
         updateModul(){
-            this.$store.dispatch('updateModul', this.Modul)
+            this.btn = true
+            this.$store.dispatch('updateModul', this.Modul).then(()=>{
+                       this.$bvModal.msgBoxOk('Se actualizaron los datos del módulo', {
+                        title: 'Confirmación',
+                        size: 'sm',
+                        buttonSize: 'sm',
+                        okVariant: 'success',
+                        headerClass: 'p-2 border-bottom-0',
+                        footerClass: 'p-2 border-top-0',
+                        centered: true
+                      })
+                       this.btn = false
+                });
         },
         back(){
            this.$store.dispatch('getModuls', this.studentSelected)

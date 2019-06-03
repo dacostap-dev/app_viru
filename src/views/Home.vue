@@ -1,20 +1,33 @@
 <template>
 <div>
+<b-container fluid>
+  <b-row class="ml-1">
+     <b-card  no-body class="mb-2">
+      <b-card-body class="no-padding">
+      <b-row no-gutters>
+      <b-img src="@/images/banner.jpg"></b-img>
+      </b-row>
+      </b-card-body>
+    </b-card>
 
-    <h1>Sistema de Gestión de alumnos</h1>
+  </b-row>
 
    <b-row>
         <b-col cols="3">
           <Menu></Menu>
         </b-col>
-        <b-col cols="8">
+        <b-col cols="8" class="mt-3">
    
-        <b-card class="h-100">
+        <b-card no-body class="h-100">
+          <b-card-body class="no-padding">
           <router-view></router-view>
+           </b-card-body>
         </b-card>
 
         </b-col>
   </b-row>
+</b-container>
+
 </div>
 </template>
 
@@ -32,3 +45,8 @@ export default {
   }
 }
 </script>
+<style lang="css">
+  .no-padding {
+    padding: 8px !important;
+}
+</style>

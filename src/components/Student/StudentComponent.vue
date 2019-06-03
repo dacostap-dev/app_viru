@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-list-group-item @click="selectStudent()">
+        <b-list-group-item href="#" class="hover border" @click="selectStudent()">
                 <b-row class="" align-h="center">
                     <b-col cols="2" md="2" class="text-center">
                         <b-img v-if="stu.genero === 'female'" src="@/users/avatar-female.png" rounded="circle" width="60" height="60" class="m-1" />
@@ -58,7 +58,23 @@ export default {
     },
     methods:{
         eliminar(){
-            this.$store.dispatch('eliminarStudent', this.stu)
+            this.$bvModal.msgBoxConfirm(`Deseas eliminar al alumno ${this.stu.name}?`, {
+                    title: 'Confirmación',
+                    size: 'sm',
+                    buttonSize: 'sm',
+                    okVariant: 'danger',
+                    okTitle: 'YES',
+                    cancelTitle: 'NO',
+                    footerClass: 'p-2',
+                    hideHeaderClose: false,
+                    centered: true
+                    }).then((value)=>{
+                        if(value == true){
+                            this.$store.dispatch('eliminarStudent', this.stu)
+                        }
+                     
+                    })
+    
         },
         ClonarAlumno(){
            this.alumno = Object.assign({}, this.stu);
