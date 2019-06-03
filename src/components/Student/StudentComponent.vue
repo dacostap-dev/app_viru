@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-list-group-item href="#" class="hover border" @click="selectStudent()">
+        <b-list-group-item class="hover border" @click="selectStudent()">
                 <b-row class="" align-h="center">
                     <b-col cols="2" md="2" class="text-center">
                         <b-img v-if="stu.genero === 'female'" src="@/users/avatar-female.png" rounded="circle" width="60" height="60" class="m-1" />
