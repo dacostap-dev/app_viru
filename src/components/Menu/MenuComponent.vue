@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-list-group>
+        <b-list-group class="mt-3">
         <b-list-group-item>Menu</b-list-group-item>
         <MenuItem v-for="option in options" :key="option.id" :option="option">
         </MenuItem>

@@ -1,6 +1,6 @@
 <template>
     <div>
-         <b-list-group-item href="#" @click="select" :class = "{active: isActive}">{{option.title}}</b-list-group-item>
+         <b-list-group-item href="#" @click="select" :variant = "isActive === true ? 'secondary' : '' ">{{option.title}}</b-list-group-item>
     </div>
 </template>
 <script>

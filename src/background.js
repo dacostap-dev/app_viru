@@ -18,7 +18,7 @@ function createWindow () {
 
   win = new BrowserWindow({
     webPreferences: {webSecurity: false},
-     width: 1200, 
+     width: 1100, 
      height: 800,
      resizable: false,
      title: 'Sistema de Gestión de Prácticas Modulares',

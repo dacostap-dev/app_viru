@@ -1,14 +1,18 @@
 <template>
   <div class="login-wrapper border border-light">
+    <b-card>
     <form class="form-signin" @submit.prevent="login">
-      <h2 class="form-signin-heading">Iniciar Sesión</h2>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input v-model="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <b-alert v-if="errors==400" variant="danger" show>Usuario Incorrecto</b-alert>
-      <button class="btn btn-lg btn-primary btn-block" type="submit"><b-spinner v-if="bandera" small type="grow"></b-spinner> Ingresar</button>
-    </form>
+        <h2 class="form-signin-heading">Iniciar Sesión</h2>
+        <b-img src="@/users/avatar-male.png"  width="80" height="80" class="m-1"></b-img>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input v-model="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <b-alert v-if="errors==400" variant="danger" show>Usuario Incorrecto</b-alert>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><b-spinner v-if="bandera" small type="grow"></b-spinner> Ingresar</button>
+      </form>
+    </b-card>
+ 
   </div>
 </template>
 

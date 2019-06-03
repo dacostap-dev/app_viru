@@ -4,10 +4,10 @@
        
         <b-row>
           <b-col cols="8">
-            <h2 class="display-5 text-left">Alumno: {{studentSelected.name}}</h2>
+            <h2 class=" text-left lead">Alumno: {{studentSelected.name}}</h2>
           </b-col>
           <b-col cols="4">
-            <b-button @click="showModal()" variant="outline-primary">Añadir nuevo modulo</b-button>
+            <b-button @click="showModal()" variant="outline-primary">Añadir nuevo modulo <i class="fas fa-plus-square"></i></b-button>
           </b-col>
         </b-row>
         <b-row>
@@ -38,6 +38,8 @@
          <b-modal 
           @show="resetModal"
           @ok="handleOk"
+          header-text-variant="white"
+          header-bg-variant="dark"
           ref="modul_register" centered title="Agregar Modulo">
             <b-form class="m-3"  ref="form" @submit.stop.prevent="handleSubmit">
               <b-form-group label-cols="4" label-cols-lg="2" label="Nombre:">

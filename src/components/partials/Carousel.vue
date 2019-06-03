@@ -10,19 +10,19 @@
         img-height="360"
     >
         <b-carousel-slide
-        caption="First slide"
+        caption="Procesamiento de Lácteos"
         img-src="@/images/img_1.png"
         ></b-carousel-slide>
         <b-carousel-slide
-        caption="Second Slide"
+        caption="Exhibición de bebidas industriales"
         img-src="@/images/img_2.png"
         ></b-carousel-slide>
         <b-carousel-slide
-        caption="Third Slide"
+        caption="Capacitación de Docentes"
         img-src="@/images/img_3.jpg"
         ></b-carousel-slide>
         <b-carousel-slide
-        caption="Third Slide"
+        caption="Resultados de Panificación"
         img-src="@/images/img_4.jpg"
         ></b-carousel-slide>
     </b-carousel>

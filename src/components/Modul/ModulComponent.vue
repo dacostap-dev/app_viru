@@ -6,11 +6,12 @@
             header-text-variant="white"
             header-tag="header"
             :header-bg-variant="color"
-            :title="modul.name"
-            style="max-width: 20rem;"
+            :sub-title="modul.name"
+            sub-title-text-variant ="normal"
+            style="width: 8rem; height:8.3rem"
             >
             <b-card-text>
-            {{color == 'danger' ? 'Incompleto' : 'Completado'}} 
+            {{color == 'danger' ? 'Incompleto' : 'Completo'}} 
             </b-card-text>
 
           </b-card>

@@ -3,7 +3,7 @@
       <b-container>
         <b-row>
             <b-input-group >
-                <b-form-input @keyup.enter="search()" type="text" v-model="buscador" placeholder="Buscar Alumno">
+                <b-form-input class="border" @keyup.enter="search()" type="text" v-model="buscador" placeholder="Buscar Alumno">
                 </b-form-input>
             <b-input-group-append>
                 <b-button @click ="search()" variant="outline-secondary">Button</b-button>

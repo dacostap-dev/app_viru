@@ -2,11 +2,11 @@
 
   <div>
     <b-container>
-      <h1 class="display-5 text-left ml-4">Promoción: {{promotionSelected.name}} </h1>
+      <h1 class="demo text-center  lead"><u>Promoción: {{promotionSelected.name}}</u> </h1>
       <b-row align-h="center">
 
-        <b-input-group style="width: 41rem;">
-            <b-form-input @keyup.enter="filter()" type="text" v-model="search" placeholder="Buscar Alumno">
+        <b-input-group style="width: 40rem;">
+            <b-form-input class="border" @keyup.enter="filter()" type="text" v-model="search" placeholder="Buscar Alumno">
             </b-form-input>
           <b-input-group-append>
             <b-button @click ="filter()" variant="outline-secondary">Button</b-button>
@@ -14,8 +14,8 @@
         </b-input-group>
 
       </b-row>
-      <b-row class="mt-2 ml-4">
-        <b-button  @click="showModal" variant="outline-primary">Añadir nuevo alumno <i class="fas fa-plus-square"></i></b-button>
+      <b-row class="mt-2 ml-1">
+        <b-button  @click="showModal" variant="outline-secondary">Añadir nuevo alumno <i class="fas fa-plus-square"></i></b-button>
       </b-row>
 
       <b-row class="mt-2 justify-content-md-center">
@@ -36,6 +36,8 @@
           @show="resetModal"
           @hidden="resetModal"
           @ok="handleOk"
+          header-text-variant="white"
+          header-bg-variant="dark"
           ref="student_register" centered title="Agregar Alumno">
             <b-form class="m-3"  ref="form" @submit.stop.prevent="handleSubmit">
 
@@ -48,11 +50,11 @@
               </b-form-group>
 
                <b-form-group label-align="left" label-cols="4" label-cols-lg="3" label="Email:">
-              <b-form-input  v-model="email" type="email" :state="emailState" required></b-form-input>
+              <b-form-input  v-model="email" type="email" :state="emailState" placeholder="example@hotmail.com" required></b-form-input>
               </b-form-group>
 
                <b-form-group  label-align="left" label="Género:">
-                <b-form-radio-group required
+                <b-form-radio-group required class="text-center"
                     v-model="genero"
                     :state="generoState"
                     :options="options"
@@ -171,5 +173,10 @@ export default {
 }
 </script>
 
-
+<style lang="css">
+  .demo {
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
+</style>
 
